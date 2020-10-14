@@ -1,4 +1,4 @@
-const wrapAsyncFunc = func => (req, res, next) =>
-  func(req, res, next).catch(next);
+const wrapAsyncFunc = func => async (req, res, next) =>
+  await func(req, res, next).catch(next);
 
 module.exports = wrapAsyncFunc;
