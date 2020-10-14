@@ -41,6 +41,7 @@ app.use('/', (req, res, next) => {
   }
   next();
 });
+
 app.use(logRequest);
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
