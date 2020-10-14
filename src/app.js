@@ -7,7 +7,7 @@ const boardRouter = require('./resources/boards/board.router');
 const taskRouter = require('./resources/tasks/task.router');
 const handlerError = require('./errors/handlerError');
 const logger = require('./logger/logger');
-const logRequest = require('./utils/log_request');
+const logRequest = require('./utils/logRequest');
 
 process
   .on('uncaughtException', err => {

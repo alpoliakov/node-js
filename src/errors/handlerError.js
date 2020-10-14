@@ -8,16 +8,17 @@ const handlerError = (err, req, res, next) => {
   if (err instanceof notFoundError) {
     logger.error({
       status: err.message,
-      statusText: err.name,
       method,
+      statusText: err.name,
       message: JSON.stringify({ url, body, query })
     });
     res.status(err.status).send(err.message);
   } else if (err) {
     logger.error({
-      method,
       status: `${INTERNAL_SERVER_ERROR}`,
-      message: getStatusText(INTERNAL_SERVER_ERROR)
+      method,
+      message: getStatusText(INTERNAL_SERVER_ERROR),
+      description: err.message
     });
     res
       .status(INTERNAL_SERVER_ERROR)
