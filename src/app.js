@@ -8,6 +8,7 @@ const taskRouter = require('./resources/tasks/task.router');
 const handlerError = require('./errors/handlerError');
 const logger = require('./logger/logger');
 const logRequest = require('./utils/logRequest');
+const startServer = require('./utils/startServer');
 
 process
   .on('uncaughtException', err => {
@@ -34,13 +35,7 @@ app.use(express.json());
 
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-app.use('/', (req, res, next) => {
-  if (req.originalUrl === '/') {
-    res.send('Service is running!');
-    return;
-  }
-  next();
-});
+app.use('/', startServer);
 
 app.use(logRequest);
 app.use('/users', userRouter);

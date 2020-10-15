@@ -13,11 +13,15 @@ const logger = createLogger({
     }),
     new transports.File({
       filename: './src/logger/request.log',
-      level: 'info'
+      level: 'info',
+      maxsize: 5242880,
+      maxFiles: 1
     }),
     new transports.File({
       filename: './src/logger/errors.log',
-      level: 'error'
+      level: 'error',
+      maxsize: 5242880,
+      maxFiles: 1
     })
   ]
 });
