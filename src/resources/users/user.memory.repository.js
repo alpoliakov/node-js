@@ -9,7 +9,7 @@ const getAll = async () => {
 const get = async id => {
   const user = DB.getEntity(ENTITY_NAME, id);
   if (!user) {
-    throw new Not_Found_Error(`Couldn't find a user with this id: ${id}`);
+    throw new Not_Found_Error(`Couldn't find a user with id: ${id}`);
   }
   return user;
 };
