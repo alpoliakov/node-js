@@ -1,0 +1,12 @@
+{
+  name: 'uncaughtException',
+  message: 'connectorDB is not defined',
+  level: 'error',
+  timestamp: '2020-10-16 03:22:08'
+}
+{
+  name: 'uncaughtException',
+  message: 'Ooops',
+  level: 'error',
+  timestamp: '2020-10-16 15:21:16'
+}
