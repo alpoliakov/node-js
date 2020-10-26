@@ -1,20 +1,22 @@
 const router = require('express').Router();
+const { OK, NO_CONTENT } = require('http-status-codes');
 const User = require('./user.model');
 const usersService = require('./user.service');
 const wrapAsyncFunc = require('../../utils/wrapAsyncFunc');
+const { toResponse } = require('./user.model');
 
 router
   .route('/')
   .get(
     wrapAsyncFunc(async (req, res) => {
       const users = await usersService.getAll();
-      await res.json(users.map(User.toResponse));
+      await res.status(OK).json(users.map(toResponse));
     })
   )
   .post(
     wrapAsyncFunc(async (req, res) => {
-      const user = await usersService.save(User.fromRequest(req.body));
-      res.status(200).send(User.toResponse(user));
+      const user = await usersService.save(req.body);
+      res.status(OK).send(User.toResponse(user));
     })
   );
 
@@ -23,19 +25,19 @@ router
   .get(
     wrapAsyncFunc(async (req, res) => {
       const user = await usersService.get(req.params.id);
-      res.status(200).send(User.toResponse(user));
+      res.status(OK).send(toResponse(user));
     })
   )
   .put(
     wrapAsyncFunc(async (req, res) => {
       const user = await usersService.update(req.params.id, req.body);
-      res.status(200).send(User.toResponse(user));
+      res.status(OK).send(toResponse(user));
     })
   )
   .delete(
     wrapAsyncFunc(async (req, res) => {
       await usersService.remove(req.params.id);
-      res.sendStatus(204);
+      res.sendStatus(NO_CONTENT);
     })
   );
 
