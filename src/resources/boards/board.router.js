@@ -1,20 +1,22 @@
 const router = require('express').Router();
-const boardsService = require('./board.service');
+const { OK, NO_CONTENT } = require('http-status-codes');
 const Board = require('./board.model');
+const boardsService = require('./board.service');
 const wrapAsyncFunc = require('../../utils/wrapAsyncFunc');
+const { toResponse } = require('./board.model');
 
 router
   .route('/')
   .get(
     wrapAsyncFunc(async (req, res) => {
       const boards = await boardsService.getAll();
-      await res.json(boards);
+      await res.status(OK).json(boards.map(toResponse));
     })
   )
   .post(
     wrapAsyncFunc(async (req, res) => {
-      const board = await boardsService.save(Board.fromRequest(req.body));
-      res.status(200).send(board);
+      const board = await boardsService.save(req.body);
+      res.status(OK).send(Board.toResponse(board));
     })
   );
 
@@ -23,19 +25,19 @@ router
   .get(
     wrapAsyncFunc(async (req, res) => {
       const board = await boardsService.get(req.params.id);
-      res.status(200).send(board);
+      res.status(OK).send(toResponse(board));
     })
   )
   .put(
     wrapAsyncFunc(async (req, res) => {
       const board = await boardsService.update(req.params.id, req.body);
-      res.status(200).send(board);
+      res.status(OK).send(toResponse(board));
     })
   )
   .delete(
     wrapAsyncFunc(async (req, res) => {
       await boardsService.remove(req.params.id);
-      res.sendStatus(200);
+      res.sendStatus(NO_CONTENT);
     })
   );
 
