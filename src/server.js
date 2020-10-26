@@ -1,4 +1,3 @@
-// const { PORT } = require('./common/config');
 const logger = require('./logger/logger');
 require('dotenv').config();
 const app = require('./app');
