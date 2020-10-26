@@ -1,22 +1,61 @@
 {
   message: 'We are connecting',
   level: 'info',
-  timestamp: '2020-10-26 13:11:26'
+  timestamp: '2020-10-26 13:40:43'
 }
 {
-  message: 'Database dropped',
+  message: 'Database dropped!',
   level: 'info',
-  timestamp: '2020-10-26 13:11:26'
+  timestamp: '2020-10-26 13:40:43'
 }
 {
-  method: 'GET',
-  message: '{"url":"/favicon.ico","body":{},"query":{}}',
+  message: 'We are connecting',
   level: 'info',
-  timestamp: '2020-10-26 13:11:38'
+  timestamp: '2020-10-26 13:46:02'
+}
+{
+  message: 'Database dropped!',
+  level: 'info',
+  timestamp: '2020-10-26 13:46:02'
+}
+{
+  message: 'App is running on http://localhost:4000',
+  level: 'info',
+  timestamp: '2020-10-26 13:46:02'
 }
 {
   method: 'POST',
-  message: '{"url":"/users","body":{"name":"Alex","login":"Bloomberg","password":"123456"},"query":{}}',
+  message: '{"url":"/users","body":{"name":"First","login":"first-user","password":"123456"},"query":{}}',
   level: 'info',
-  timestamp: '2020-10-26 13:12:20'
+  timestamp: '2020-10-26 13:47:01'
+}
+{
+  method: 'POST',
+  message: '{"url":"/users","body":{"name":"Second","login":"second-user","password":"123456"},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:47:32'
+}
+{
+  method: 'GET',
+  message: '{"url":"/users","body":{},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:48:01'
+}
+{
+  method: 'GET',
+  message: '{"url":"/users/5f96b73553359722a3642815","body":{},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:54:28'
+}
+{
+  method: 'PUT',
+  message: '{"url":"/users/5f96b73553359722a3642815","body":{"name":"first_user_change","login":"leasard","password":"123654"},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:55:27'
+}
+{
+  method: 'DELETE',
+  message: '{"url":"/users/5f96b73553359722a3642815","body":{},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:55:59'
 }

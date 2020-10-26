@@ -16,7 +16,7 @@ const connectionDB = cb => {
   db.once('open', async () => {
     logger.info('We are connecting');
     await db.dropDatabase(() => {
-      logger.info('Database dropped');
+      logger.info('Database dropped!');
       cb();
     });
   });
