@@ -1,12 +1,22 @@
 {
-  name: 'uncaughtException',
-  message: 'connectorDB is not defined',
-  level: 'error',
-  timestamp: '2020-10-16 03:22:08'
+  message: 'We are connecting',
+  level: 'info',
+  timestamp: '2020-10-26 13:11:26'
 }
 {
-  name: 'uncaughtException',
-  message: 'Ooops',
-  level: 'error',
-  timestamp: '2020-10-16 15:21:16'
+  message: 'Database dropped',
+  level: 'info',
+  timestamp: '2020-10-26 13:11:26'
+}
+{
+  method: 'GET',
+  message: '{"url":"/favicon.ico","body":{},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:11:38'
+}
+{
+  method: 'POST',
+  message: '{"url":"/users","body":{"name":"Alex","login":"Bloomberg","password":"123456"},"query":{}}',
+  level: 'info',
+  timestamp: '2020-10-26 13:12:20'
 }

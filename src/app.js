@@ -9,6 +9,8 @@ const handlerError = require('./errors/handlerError');
 const logger = require('./logger/logger');
 const logRequest = require('./utils/logRequest');
 const startServer = require('./utils/startServer');
+const helmet = require('helmet');
+const cors = require('cors');
 
 process
   .on('uncaughtException', err => {
@@ -31,6 +33,8 @@ process
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
+app.use(cors());
+app.use(helmet());
 app.use(express.json());
 
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
