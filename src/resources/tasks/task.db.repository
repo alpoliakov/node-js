@@ -28,4 +28,21 @@ const remove = async (boardId, id) => {
   }
 };
 
-module.exports = { getAll, get, save, update, remove };
+const removeTasksFromBoard = async id => {
+  const removeResult = await Task.deleteMany({ boardId: id });
+  return removeResult.deletedCount;
+};
+
+const unsubscribeFromTasks = async id => {
+  return await Task.updateMany({ userId: id }, { userId: null });
+};
+
+module.exports = {
+  getAll,
+  get,
+  save,
+  update,
+  remove,
+  unsubscribeFromTasks,
+  removeTasksFromBoard
+};
