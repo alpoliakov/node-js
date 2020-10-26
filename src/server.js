@@ -1,5 +1,4 @@
 const logger = require('./logger/logger');
-
 process
   .on('uncaughtException', err => {
     logger.error({
