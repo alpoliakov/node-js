@@ -26,4 +26,9 @@ const remove = async id => {
   return removeResult.deletedCount;
 };
 
-module.exports = { getAll, save, get, remove, update };
+const userPresentFunc = async user => {
+  const { login } = user;
+  return User.findOne({ login });
+};
+
+module.exports = { getAll, save, get, remove, update, userPresentFunc };

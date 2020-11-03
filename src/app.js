@@ -12,6 +12,9 @@ const logRequest = require('./utils/logRequest');
 const startServer = require('./utils/startServer');
 const helmet = require('helmet');
 const cors = require('cors');
+const loginRouter = require('./resources/authenticate/authenticate.router');
+const checkToken = require('./utils/checkToken');
+// const { catchErrors } = require('./utils/catch-error');
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -21,6 +24,9 @@ app.use(helmet());
 app.use(express.json());
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/', startServer);
+
+app.use('*', checkToken);
+app.use('/login', loginRouter);
 
 app.use(logRequest);
 app.use('/users', userRouter);
