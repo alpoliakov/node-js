@@ -1,11 +1,7 @@
 const usersRepo = require('./user.db.repository');
 const taskService = require('../tasks/task.service');
 const { User } = require('./user.model');
-// const bcrypt = require('bcrypt');
-// const util = require('util');
 const { hashPassword } = require('../../utils/hashHelper');
-
-// const hashPassword = util.promisify(bcrypt.hash);
 
 const getAll = () => usersRepo.getAll();
 
@@ -19,7 +15,7 @@ const save = async (name, login, password) => {
 
 const update = async (id, user) => {
   // eslint-disable-next-line require-atomic-updates
-  user.password = await hashPassword(user.password, 10);
+  user.password = await hashPassword(user.password);
   return usersRepo.update(id, user);
 };
 
